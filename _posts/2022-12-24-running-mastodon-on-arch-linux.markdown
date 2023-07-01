@@ -165,7 +165,24 @@ polkit.addRule(function(action,subject) {
 
 The Mastodon docs suggest running a cleanup command every week to clean up the media caches.
 However, they don't ship with scripts or timers that do this, so i forgot to set it up initially.
-Add the following service and timer to run this regularly:
+Add the following script, service, and timer to run this regularly:
+
+```bash
+# /home/mastodon/mastodon-cleanup.sh
+# remember to `chmod +x ~/mastodon-cleanup.sh` so it can run properly
+#!/usr/bin/env bash
+
+set -e
+set -o pipefail
+
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+cd $HOME/live
+export RAILS_ENV=production
+bin/tootctl media remove
+bin/tootctl preview_cards remove
+```
 
 ```
 # /etc/systemd/system/mastodon-cleanup.service
@@ -175,9 +192,7 @@ Description=Weekly cleanup tasks for mastodon
 [Service]
 Type=oneshot
 User=mastodon
-Environment=RAILS_ENV=production
-ExecStart=/home/mastodon/live/bin/tootctl media remove
-ExecStart=/home/mastodon/live/bin/tootctl preview_cards remove
+ExecStart=/home/mastodon/mastodon-cleanup.sh
 ```
 
 ```
