@@ -251,3 +251,16 @@ but there is [information in the Mastodon docs][masto-scaling] if you're curious
 ## to be continued?
 
 I may add more things here if i run into more weird edges in systems administration.
+
+## changelog
+
+Since i keep updating this post when i tweak my server, i'll try to keep a log of when/what i update
+here:
+
+- *2022-12-24*: Initial version.
+- *2023-07-01*: Added blurb about the cleanup job.
+- *2024-01-27*: Multiple updates:
+  - Updated Node.js package to reflect current requirements.
+  - Added blurb about corepack and Yarn.
+  - Added blurb about configuring iptables.
+  - Added section about configuring OpenSearch for full-text search.
