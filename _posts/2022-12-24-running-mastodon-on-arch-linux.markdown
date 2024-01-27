@@ -61,6 +61,17 @@ can remember about setting up the Arch system in contrast with the official inst
 
 -----
 
+If you want to follow the docs' [recommendation for setting up a firewall][iptables] that blocks
+everything but HTTP, HTTPS, and SSH, the equivalent files are `/etc/iptables/iptables.rules` and
+`/etc/iptables/ip6tables.rules`, and the way to load the rules is to use the systemd units
+`iptables.service` and `ip6tables.service`, which are one-shot services that load these saved rules
+when they are started. See also, [ArchWiki's blurb about configuring iptables][arch-iptables].
+
+[iptables]: https://docs.joinmastodon.org/admin/prerequisites/#install-a-firewall-and-only-allow-ssh-http-and-https-ports
+[arch-iptables]: https://wiki.archlinux.org/title/Iptables#Configuration_and_usage
+
+-----
+
 When installing system packages:
 
 - Arch has several different Node.js packages for various LTS versions. While the instructions have
