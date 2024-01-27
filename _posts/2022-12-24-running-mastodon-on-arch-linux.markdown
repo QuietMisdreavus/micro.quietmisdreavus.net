@@ -64,8 +64,8 @@ can remember about setting up the Arch system in contrast with the official inst
 When installing system packages:
 
 - Arch has several different Node.js packages for various LTS versions. While the instructions have
-  you `curl | bash` an installation script for node 16.x, Arch users can install the
-  `nodejs-lts-gallium` package instead, which tracks the same version.
+  you `curl | bash` an installation script for node 20.x, Arch users can install the
+  `nodejs-lts-iron` package instead, which tracks the same version.
 - Arch keeps an extremely up-to-date version of PostgreSQL in its repos. This can [cause
   problems][postgres-upgrade] when new versions come out. I recommend installing both `postgresql`
   and `postgresql-old-upgrade` to have the old version on hand whenever a major release comes out.
@@ -82,7 +82,7 @@ An equivalent `pacman` call to install the prerequisite packages looks like this
 ```
 sudo pacman -S base-devel imagemagick ffmpeg libpqxx libxml2 libxslt protobuf \
   openssl libyaml nginx certbot certbot-nginx redis postgresql \
-  postgresql-old-upgrade libidn jemalloc yarn
+  postgresql-old-upgrade libidn jemalloc yarn nodejs-lts-iron
 ```
 
 -----
@@ -110,6 +110,15 @@ Ruby from source) followed by `rbenv global (version)`. `rbenv` will likely comp
 knowing about the version in question, but it will also show a `git pull` command you can use to
 update its version list. (It's probably also worth running `rbenv versions` and `rbenv uninstall
 (old version)` when this happens, too, so you can clean up old stuff.)
+
+-----
+
+Recent versions of Node.js include "[corepack][]", an alternate way to manage package managers in
+the npm universe. This can create some headaches if you, like me, are unfamiliar with the world of
+Node.js and npm. The one trick i can give you is to run `corepack enable` as root, because it will
+otherwise try to mess with system directories.
+
+[corepack]: https://yarnpkg.com/corepack
 
 ### the mastodon user
 
