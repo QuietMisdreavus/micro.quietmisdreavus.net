@@ -229,6 +229,25 @@ Persistent=true
 WantedBy=timers.target
 ```
 
+### full-text search
+
+If you want to set up full-text search, the [official docs][masto-es] point you to Elasticsearch,
+since that's what it's tested with. However, while Elasticsearch is available in the AUR and there's
+[an ArchWiki page on setting it up][arch-es], i wanted to avoid using the AUR on a production
+system. Instead, someone pointed me to [OpenSearch][], a compatible fork with a license that allows
+it to be packaged in Arch's repos. After installing and configuring OpenSearch with the wiki's
+instructions, i was able to follow the rest of the instructions in the Mastodon docs to configure
+the search index and get full-text search up and running.
+
+I would personally recommend following the wiki's advice of binding OpenSearch to localhost, unless
+you're specifically setting up a multi-server installation (which is outside the scope of this post,
+but there is [information in the Mastodon docs][masto-scaling] if you're curious).
+
+[masto-es]: https://docs.joinmastodon.org/admin/elasticsearch/
+[arch-es]: https://wiki.archlinux.org/title/Elasticsearch
+[OpenSearch]: https://wiki.archlinux.org/title/OpenSearch
+[masto-scaling]: https://docs.joinmastodon.org/admin/scaling/
+
 ## to be continued?
 
 I may add more things here if i run into more weird edges in systems administration.
