@@ -6,6 +6,15 @@
     --meta-color: #{$meta-color-dark};
     --border-color: #{$border-color-dark};
 }
+@media (prefers-color-scheme: light) {
+    :root {
+        --bg-color: #{$bg-color-light};
+        --text-color: #{$text-color-light};
+        --link-color: #{$link-color-light};
+        --meta-color: #{$meta-color-light};
+        --border-color: #{$border-color-light};
+    }
+}
 body {
     margin: 0;
     font-family: $base-font-family;
