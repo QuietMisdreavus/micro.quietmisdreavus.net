@@ -1,18 +1,25 @@
 @charset "utf-8";
+:root {
+    --bg-color: #{$bg-color-dark};
+    --text-color: #{$text-color-dark};
+    --link-color: #{$link-color-dark};
+    --meta-color: #{$meta-color-dark};
+    --border-color: #{$border-color-dark};
+}
 body {
     margin: 0;
     font-family: $base-font-family;
     font-size: $base-font-size;
     line-height: $base-line-height;
-    color: $text-color;
-    background-color: $bg-color;
+    color: var(--text-color);
+    background-color: var(--bg-color);
 }
 p {
     text-align: justify;
     word-break: break-word;
 }
 a {
-    color: $link-color;
+    color: var(--link-color);
     text-decoration: none;
     &:hover {
         text-decoration: underline;
@@ -30,7 +37,7 @@ h6 {
 blockquote {
     font-style: italic;
     padding-left: 1rem;
-    border-left: 3px solid $border-color;
+    border-left: 3px solid var(--border-color);
 }
 img {
     max-width: 100%;
@@ -49,11 +56,11 @@ td {
 th {
     text-align: left;
     vertical-align: bottom;
-    border-bottom: 2px solid $border-color;
+    border-bottom: 2px solid var(--border-color);
 }
 td {
     vertical-align: top;
-    border-bottom: 1px solid $border-color;
+    border-bottom: 1px solid var(--border-color);
 }
 pre {
     padding: 1.25rem;
@@ -65,11 +72,11 @@ code {
 }
 hr {
     border: none;
-    border-top: 2px solid $border-color;
+    border-top: 2px solid var(--border-color);
 }
 
 .footnotes {
-    border-top: 2px solid $border-color;
+    border-top: 2px solid var(--border-color);
 }
 
 .epigraph {

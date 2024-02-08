@@ -8,13 +8,13 @@ main {
     .site-title {
         font-weight: 300;
         > a {
-            color: $text-color;
+            color: var(--text-color);
             text-decoration: none;
         }
     }
     .site-nav {
         > a {
-            color: $text-color;
+            color: var(--text-color);
             &:hover {
                 text-decoration: none;
             }
@@ -33,12 +33,12 @@ main {
     > li {
         line-height: 1.75;
         span {
-            color: $meta-color;
+            color: var(--meta-color);
             margin-right: 1.5rem;
             font-size: $small-font-size;
         }
         a {
-            color: $text-color;
+            color: var(--text-color);
             text-decoration: none;
         }
         p.description {
@@ -58,7 +58,7 @@ main {
     .post-meta {
         margin: 0;
         text-align: center;
-        color: $meta-color;
+        color: var(--meta-color);
         font-size: $small-font-size;
     }
 }
