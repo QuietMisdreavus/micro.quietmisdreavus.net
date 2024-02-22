@@ -99,7 +99,7 @@ sudo pacman -S base-devel imagemagick ffmpeg libpqxx libxml2 libxslt protobuf \
 -----
 
 Because of the way system libraries are upgraded, many native extensions to Ruby gems can fail to
-link against them after an upgrade. Because of this, i tend to include an `rm -rf vendor
+link against them after an upgrade. Because of this, i tend to include an `rm -rf vendor/bundle
 node_modules` before each `bundle install && yarn install` during an update.
 
 -----
@@ -264,3 +264,4 @@ here:
   - Added blurb about corepack and Yarn.
   - Added blurb about configuring iptables.
   - Added section about configuring OpenSearch for full-text search.
+- *2024-02-22*: Small tweak to the note about clearing installed Ruby/npm dependencies.
