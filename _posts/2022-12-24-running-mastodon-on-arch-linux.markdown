@@ -109,6 +109,79 @@ want to enable/start `certbot-renew.timer` to set up automatic certificate renew
 
 -----
 
+Speaking of configuring Certbot and nginx, it's important to note that the default configuration for
+nginx is quite different between Ubuntu and Arch. Ubuntu has a `sites-available`/`sites-enabled`
+setup for drop-in configuration, whereas Arch sets up with a single `nginx.conf`. I personally
+modified the configuration file to remove the example server configurations and replace it with a
+single `include sites-enabled/*;` line. I also modified the `user` command at the top of the file to
+add the `mastodon` user as well. Here's the final result, as of 2024-02-22:
+
+```
+# /etc/nginx/nginx.conf
+user mastodon http;
+worker_processes  1;
+
+#error_log  logs/error.log;
+#error_log  logs/error.log  notice;
+#error_log  logs/error.log  info;
+
+#pid        logs/nginx.pid;
+
+
+events {
+    worker_connections  1024;
+}
+
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    #log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+    #                  '$status $body_bytes_sent "$http_referer" '
+    #                  '"$http_user_agent" "$http_x_forwarded_for"';
+
+    #access_log  logs/access.log  main;
+
+    sendfile        on;
+    #tcp_nopush     on;
+
+    #keepalive_timeout  0;
+    keepalive_timeout  65;
+
+    #gzip  on;
+
+    include sites-enabled/*;
+}
+```
+
+Then, after running `sudo mkdir /etc/nginx/sites-{available,enabled}`, i was able to continue with
+the Mastodon instructions for setting up nginx.
+
+...However, i did more tweaks and simply changing the default `example.com` domain in the
+configuration and the certificate paths. Certbot will create a configuration file that sets the TLS
+versions and ciphers based on the current generally accepted practice. I deleted those lines from
+the example Mastodon nginx configuration and replaced it with a reference to the generated
+configuration:
+
+```
+# remember to change the `example.com` domain to point to your own!
+  listen 443 ssl http2;
+  listen [::]:443 ssl http2;
+  server_name example.com;
+
+  include /etc/letsencrypt/options-ssl-nginx.conf;
+
+  # Uncomment these lines once you acquire a certificate:
+  ssl_certificate     /etc/letsencrypt/live/example.com/fullchain.pem;
+  ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;
+```
+
+Fortunately, the default Mastodon configuration already includes the correct setup for vending the
+certificate challenge, so no modification is needed there.
+
+-----
+
 Because of the way system libraries are upgraded, many native extensions to Ruby gems can fail to
 link against them after an upgrade. Because of this, i tend to include an `rm -rf vendor/bundle
 node_modules` before each `bundle install && yarn install` during an update.
@@ -278,3 +351,4 @@ here:
 - *2024-02-22*: Multiple updates:
   - Small tweak to the note about clearing installed Ruby/npm dependencies.
   - Added blurb about manually enabling and starting services.
+  - Added section about configuring nginx and Certbot.
