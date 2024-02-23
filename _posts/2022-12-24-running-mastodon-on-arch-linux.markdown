@@ -215,6 +215,13 @@ otherwise try to mess with system directories.
 
 [corepack]: https://yarnpkg.com/corepack
 
+-----
+
+This isn't related to Arch specifically, but you can get away with building the web assets on a
+low-RAM server by adding swap and forcibly increasing the Node.js heap size. Add `export
+NODE_OPTIONS='--max-old-space-size=4096'` to the mastodon user's bashrc to give it enough memory to
+build even Glitch or Chuckya's assets on 2GB of RAM.
+
 ### the mastodon user
 
 Arch's `useradd` command doesn't have a `--disabled-login` flag like the `adduser` command used in
@@ -352,3 +359,4 @@ here:
   - Small tweak to the note about clearing installed Ruby/npm dependencies.
   - Added blurb about manually enabling and starting services.
   - Added section about configuring nginx and Certbot.
+  - Added note about increasing Node's heap size.
