@@ -98,6 +98,17 @@ sudo pacman -S base-devel imagemagick ffmpeg libpqxx libxml2 libxslt protobuf \
 
 -----
 
+Remember that Ubuntu automatically starts associated systemd services after installing a package,
+but Arch doesn't, so you'll need to `systemctl enable --now postgresql.service redis.service
+nginx.service` before starting to configure the database, the web server, and Mastodon itself.
+Remember to also follow the wiki instructions for setting up [Certbot][] and [PostgreSQL][]. You'll
+want to enable/start `certbot-renew.timer` to set up automatic certificate renewal.
+
+[Certbot]: https://wiki.archlinux.org/title/Certbot
+[PostgreSQL]: https://wiki.archlinux.org/title/PostgreSQL
+
+-----
+
 Because of the way system libraries are upgraded, many native extensions to Ruby gems can fail to
 link against them after an upgrade. Because of this, i tend to include an `rm -rf vendor/bundle
 node_modules` before each `bundle install && yarn install` during an update.
@@ -264,4 +275,6 @@ here:
   - Added blurb about corepack and Yarn.
   - Added blurb about configuring iptables.
   - Added section about configuring OpenSearch for full-text search.
-- *2024-02-22*: Small tweak to the note about clearing installed Ruby/npm dependencies.
+- *2024-02-22*: Multiple updates:
+  - Small tweak to the note about clearing installed Ruby/npm dependencies.
+  - Added blurb about manually enabling and starting services.
