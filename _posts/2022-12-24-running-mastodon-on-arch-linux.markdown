@@ -188,13 +188,16 @@ node_modules` before each `bundle install && yarn install` during an update.
 
 -----
 
-Because Arch's version of OpenSSL is relatively new compared to the Ubuntu LTS releases, there's an
+~~Because Arch's version of OpenSSL is relatively new compared to the Ubuntu LTS releases, there's an
 issue with the hash used by webpack when precompiling assets. To counteract this, add the following
-to your environment when running `assets:precompile` (i added it to the `mastodon` user's bashrc):
+to your environment when running `assets:precompile` (i added it to the `mastodon` user's bashrc):~~
 
 ```
 export NODE_OPTIONS=--openssl-legacy-provider
 ```
+
+*UPDATE*: This isn't necessary any more; i think webpack was updated at some point and a server i
+set up more recently didn't need this.
 
 -----
 
@@ -360,3 +363,4 @@ here:
   - Added blurb about manually enabling and starting services.
   - Added section about configuring nginx and Certbot.
   - Added note about increasing Node's heap size.
+  - Struck note about changing the OpenSSL provider for webpack.
