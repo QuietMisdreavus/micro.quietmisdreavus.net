@@ -16,6 +16,21 @@ on a lot of games this year, and i felt like listing them all up in no particula
 these have had the same amount of play time or gained the same amount of love, but i feel like
 they’re all worth a look.
 
+## Goodboy Galaxy (GBA)
+
+*EDIT*: Many thanks to [RetroAchievements][]' "year in review" email that went out January 1 to
+remind me that i also played this lovely game this year!
+
+[RetroAchievements]: https://retroachievements.org/
+
+I'm utterly entranced by the idea of making homebrew games for retro platforms. It just feels really
+cool to take the modern understanding of game design and hardware execution and port it back to an
+older system to create something that can truly shine. Goodboy Galaxy definitely ticks all these
+boxes and became something that felt both retro and modern at the same time. It's just a shame that
+there wasn't a reference guide i could use to try and mop up all the collectibles and get 100%
+completion. I definitely tried, but some of the puzzle-y aspects of the game really stumped me at
+the end.
+
 ## Myst and Riven
 
 This year i bought the remasters of Myst and Riven. I’ve played through Myst a bunch of times, so
